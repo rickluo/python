@@ -46,7 +46,7 @@ class HttpReqHost():
 
     def http_get(self):
         #http://$url
-        http_address = "bdrp.baidu.com"
+        http_address = ".com"
         request_data = "/api/cluster/information/getClusterList"
         headers = {'Content-type': 'application/x-www-form-urlencoded', 'Accept': 'text/plain'}
         httpClient = httplib.HTTPConnection(http_address, 80, timeout=10)
