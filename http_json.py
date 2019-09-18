@@ -10,7 +10,7 @@ import getopt
 import subprocess
 import time
 import thread
-import baidu_bns
+
 
 # Usage args
 options,args=getopt.getopt(sys.argv[1:],'hl:c:b:')
