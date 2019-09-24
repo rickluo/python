@@ -12,7 +12,7 @@ import random
 class RequestRedis():
     def get_ipport(self,redis_bns='bnsname'):
         redis_bns=redis_bns
-        shell_cmd_args=['get_instance_by_service','-ab',redis_bns]
+        shell_cmd_args=['g_i_by_s','-ab',redis_bns]
         p=subprocess.Popen(shell_cmd_args,stdout=subprocess.PIPE)
         tmp_array=[]
         for line in p.stdout.readlines():
