@@ -62,7 +62,7 @@ class HttpReqHost():
         http_address = "%s.m.b.com"%(self.idc_region)
         request_data = "/agentdetail.jsp?hostId=%s"%(self.ip)
         headers = {'Content-type': 'application/x-www-form-urlencoded', 'Accept': 'text/plain'}
-        httpClient = httplib.HTTPConnection(http_address, 8529, timeout=10)
+        httpClient = httplib.HTTPConnection(http_address, 8888, timeout=10)
         httpClient.request('GET', request_data, None, headers)
         response = httpClient.getresponse()
         return response.read()
@@ -79,8 +79,8 @@ class HostnameToip():
         cmd_re = subprocess.check_output(cmd)
         cmd_re = re.split('\s',cmd_re)
         host_ip = cmd_re[3]
-        if host_region == 'szwg01':
-            host_region = 'szwg'
+        if host_region == 'sz01':
+            host_region = 'sz'
         data_return = [host_region,host_ip]
         return data_return
         
@@ -111,32 +111,16 @@ class VerifyIdc():
         self.idc=idc
 
     def verify_idc(self):
-        idc_bj=['bjyz', 'cp01', 'cq01','cq02', 'm1', 'tc', 'st01','bjhw','dbl']
-        idc_gz=['gzhl', 'gzhxy', 'gzns','gzbh']
-        idc_hz=['hz01']
-        idc_nj=['nj01','nj02', 'nj03', 'njjs']
-        idc_nmg=['nmg01','nmg02','nmg012']
-        idc_sh=['sh01']
-        idc_sz=['szth', 'szwg','szwg01','szwg3']
-        idc_yq=['yq01','yq011','yq014']
+        idc_bj=['bj1', 'bj2']
+        idc_gz=['gz1', 'gz2']
+
         idc=self.idc
 
         if idc in idc_bj:
             return "bj"
         if idc in idc_gz:
             return "gz"
-        if idc in idc_hz:
-            return "hz"
-        if idc in idc_nj:
-            return "nj"
-        if idc in idc_nmg:
-            return "nmg"
-        if idc in idc_sh:
-            return "sh"
-        if idc in idc_sz:
-            return "sz"
-        if idc in idc_yq:
-            return "yq"
+
 
 class MyThread(threading.Thread):
 
@@ -155,9 +139,9 @@ class MyThread(threading.Thread):
             return None
 
 class RequestRedis():
-    def get_ipport(self,redis_bns='g.redisop-recovery-p.M.all'):
+    def get_ipport(self,redis_bns='g.redis-recovery-p.M.all'):
         redis_bns=redis_bns
-        shell_cmd_args=['get_instance_by_service','-ab',redis_bns]
+        shell_cmd_args=['g_i_b_s','-ab',redis_bns]
         p=subprocess.Popen(shell_cmd_args,stdout=subprocess.PIPE)
         tmp_array=[]
         for line in p.stdout.readlines():
