@@ -46,8 +46,8 @@ class HttpReqHost():
 
     def http_get(self):
         #http://$url
-        http_address = ".com"
-        request_data = "/api/cluster/information/getClusterList"
+        http_address = "google.com"
+        request_data = "/api/xxxxx"
         headers = {'Content-type': 'application/x-www-form-urlencoded', 'Accept': 'text/plain'}
         httpClient = httplib.HTTPConnection(http_address, 80, timeout=10)
         httpClient.request('GET', request_data, None, headers)
